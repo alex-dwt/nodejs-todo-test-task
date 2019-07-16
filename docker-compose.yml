@@ -1,0 +1,23 @@
+version: "2.2"
+
+services:
+    database:
+        image: postgres:11.4
+#        volumes:
+#            - msdata:/var/lib/mysql
+        environment:
+            - POSTGRES_PASSWORD=${DB_PASS}
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_DB=${DB_NAME}
+        network_mode: "host"
+#        networks:
+#            - webnet
+
+
+#networks:
+#  webnet:
+#
+#volumes:
+#   msdata:
+#   rabbitmq-data:
+#   uploads-directory:
