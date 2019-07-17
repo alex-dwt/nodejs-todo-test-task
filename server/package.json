@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --exit tests/*.js"
   },
   "author": "Alex Lukashevich",
   "license": "MIT",
@@ -15,5 +15,10 @@
     "pg": "^7.11.0",
     "sequelize": "^5.10.1",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.1.4"
   }
 }
