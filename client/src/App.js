@@ -15,6 +15,7 @@ import 'semantic-ui-css/semantic.min.css'
 import TasksReducer from './reducers/TasksReducer';
 import {TasksListScreen} from "./screens/TasksListScreen";
 import {TasksViewOneScreen} from "./screens/TasksViewOneScreen";
+import {TasksCreateScreen} from "./screens/TasksCreateScreen";
 
 function App() {
   return (
@@ -31,6 +32,11 @@ function App() {
                       exact
                       path="/view/:id"
                       component={TasksViewOneScreen}
+                  />
+                  <Route
+                      exact
+                      path="/add"
+                      component={TasksCreateScreen}
                   />
               </Router>
           </div>

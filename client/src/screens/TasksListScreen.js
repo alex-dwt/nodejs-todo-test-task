@@ -18,7 +18,14 @@ class Screen extends PureComponent {
             <Table celled striped selectable>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Tasks list</Table.HeaderCell>
+                        <Table.HeaderCell>
+                            <span style={{display: 'inline-block', float: 'right'}}>
+                                <Link to="/add">
+                                    Create New Task
+                                </Link>
+                            </span>
+                            Tasks list
+                        </Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 

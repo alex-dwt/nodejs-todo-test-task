@@ -46,3 +46,14 @@ export async function deleteTaskRequest(id) {
         return false;
     }
 }
+
+export async function createTaskRequest(label) {
+    try {
+        await Axios.post(TASKS_URL, {label});
+
+        return true;
+    }
+    catch (e) {
+        return null;
+    }
+}
