@@ -35,3 +35,14 @@ export async function completeTaskRequest(id) {
         return null;
     }
 }
+
+export async function deleteTaskRequest(id) {
+    try {
+        await Axios.delete(`${TASKS_URL}/${id}`);
+
+        return true;
+    }
+    catch (e) {
+        return false;
+    }
+}
