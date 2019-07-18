@@ -2,11 +2,9 @@ version: "2.2"
 
 services:
     server:
-        image: node:12.6.0-stretch
-        command: bash -c 'sleep 3 && cd /app/server && npm start'
-#        command: bash -c 'sleep 10000'
-        volumes:
-            - '.:/app'
+        image: nodejstesttask:1.0.0
+        build:
+            context: .
         environment:
             - NODE_ENV=${NODE_ENV}
             - POSTGRES_PASSWORD=${DB_PASS}
