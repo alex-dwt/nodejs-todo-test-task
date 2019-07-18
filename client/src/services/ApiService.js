@@ -57,3 +57,14 @@ export async function createTaskRequest(label) {
         return null;
     }
 }
+
+export async function editTaskRequest(id, label) {
+    try {
+        await Axios.put(`${TASKS_URL}/${id}`, {label});
+
+        return true;
+    }
+    catch (e) {
+        return null;
+    }
+}

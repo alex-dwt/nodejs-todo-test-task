@@ -6,11 +6,11 @@ import {
 import {Link} from "react-router-dom";
 
 import {TaskComponent} from "../components/TaskComponent";
-import {tasksListPageOpenedAction} from "../actions/TasksActions";
+import {tasksViewListTasksAction} from "../actions/TasksActions";
 
 class Screen extends PureComponent {
     componentDidMount() {
-        tasksListPageOpenedAction();
+        tasksViewListTasksAction();
     }
 
     render() {
@@ -37,6 +37,9 @@ class Screen extends PureComponent {
                                     <div style={{float: ' right'}}>
                                         <div>
                                             <Link to={`/view/${task.id}`}>View</Link>
+                                        </div>
+                                        <div>
+                                            <Link to={`/edit/${task.id}`}>Edit</Link>
                                         </div>
                                     </div>
                                     <TaskComponent item={task}/>

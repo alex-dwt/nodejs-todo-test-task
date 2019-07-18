@@ -16,6 +16,7 @@ import TasksReducer from './reducers/TasksReducer';
 import {TasksListScreen} from "./screens/TasksListScreen";
 import {TasksViewOneScreen} from "./screens/TasksViewOneScreen";
 import {TasksCreateScreen} from "./screens/TasksCreateScreen";
+import {TasksEditScreen} from "./screens/TasksEditScreen";
 
 function App() {
   return (
@@ -37,6 +38,11 @@ function App() {
                       exact
                       path="/add"
                       component={TasksCreateScreen}
+                  />
+                  <Route
+                      exact
+                      path="/edit/:id"
+                      component={TasksEditScreen}
                   />
               </Router>
           </div>

@@ -6,13 +6,13 @@ import {Button} from "semantic-ui-react";
 import {TaskComponent} from "../components/TaskComponent";
 import {
     completeTaskAction,
-    tasksViewOnePageOpenedAction
+    tasksViewOneTaskAction
 } from "../actions/TasksActions";
 import {deleteTaskRequest} from "../services/ApiService";
 
 class Screen extends PureComponent {
     componentDidMount() {
-        tasksViewOnePageOpenedAction(this.props.match.params.id);
+        tasksViewOneTaskAction(this.props.match.params.id);
     }
 
     render() {

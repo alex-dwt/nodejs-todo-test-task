@@ -9,7 +9,12 @@ import {
     TASKS_ACTION_TASKS_LIST_LOADING_FINISHED,
 } from "../reducers/TasksReducer";
 
-export async function tasksListPageOpenedAction() {
+export async function tasksViewListTasksAction() {
+    store.dispatch({
+        type: TASKS_ACTION_TASKS_LIST_LOADING_FINISHED,
+        payload: [],
+    });
+
     const payload = await getTasksListRequest();
 
     store.dispatch({
@@ -18,7 +23,7 @@ export async function tasksListPageOpenedAction() {
     });
 }
 
-export async function tasksViewOnePageOpenedAction(id) {
+export async function tasksViewOneTaskAction(id) {
     store.dispatch({
         type: TASKS_ACTION_CURRENT_TASK_LOADING_FINISHED,
         payload: null,
