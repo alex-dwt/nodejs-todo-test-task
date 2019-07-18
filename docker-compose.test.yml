@@ -1,0 +1,5 @@
+version: "2.2"
+
+services:
+    server:
+        command: bash -c "sleep 10 && npm test"
