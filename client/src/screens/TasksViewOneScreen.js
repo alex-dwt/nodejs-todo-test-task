@@ -4,12 +4,14 @@ import {Link} from 'react-router-dom';
 
 import {TaskComponent} from "../components/TaskComponent";
 import {
-    TasksViewOnePageOpened
+    completeTaskAction,
+    tasksViewOnePageOpenedAction
 } from "../actions/TasksActions";
+import {Button} from "semantic-ui-react";
 
 class Screen extends PureComponent {
     componentDidMount() {
-        TasksViewOnePageOpened(this.props.match.params.id);
+        tasksViewOnePageOpenedAction(this.props.match.params.id);
     }
 
     render() {
@@ -18,13 +20,30 @@ class Screen extends PureComponent {
                 <Link to="/">
                     <p style={{textAlign: 'center'}}>Go to list</p>
                 </Link>
+
                 {
                     !this.props.currentTask
                     && <p style={{textAlign: 'center'}}>Loading...</p>
                 }
+
                 {
                     this.props.currentTask
-                    && <TaskComponent item={this.props.currentTask}/>
+                    && (
+                        <div>
+                            <TaskComponent item={this.props.currentTask}/>
+                            {
+                                !this.props.currentTask.isCompleted
+                                && <p style={{textAlign: 'center'}}>
+                                    <Button
+                                        onClick={() => this.props.onCompleteClick(this.props.currentTask.id)}
+                                        primary
+                                    >
+                                        Complete Task
+                                    </Button>
+                                </p>
+                            }
+                        </div>
+                    )
                 }
             </div>
         );
@@ -39,8 +58,8 @@ const mapStateToProps = ({
     currentTask,
 });
 
-const mapDispatchToProps = dispatch => ({
-
+const mapDispatchToProps = () => ({
+    onCompleteClick: id => completeTaskAction(id),
 });
 
 export const TasksViewOneScreen = connect(

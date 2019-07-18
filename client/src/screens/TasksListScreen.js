@@ -6,11 +6,11 @@ import {
 import {Link} from "react-router-dom";
 
 import {TaskComponent} from "../components/TaskComponent";
-import {TasksListPageOpened} from "../actions/TasksActions";
+import {tasksListPageOpenedAction} from "../actions/TasksActions";
 
 class Screen extends PureComponent {
     componentDidMount() {
-        TasksListPageOpened();
+        tasksListPageOpenedAction();
     }
 
     render() {

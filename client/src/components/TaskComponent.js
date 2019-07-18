@@ -1,8 +1,5 @@
 import React from 'react';
 import Moment from 'react-moment';
-import {
-    Button,
-} from 'semantic-ui-react';
 
 export const TaskComponent = ({
     item: {
@@ -25,12 +22,6 @@ export const TaskComponent = ({
                     {isCompleted ? 'Already Completed' : 'Uncompleted'}
                 </span>
             </p>
-            {
-                !isCompleted
-                && <div style={{textAlign: 'center'}}>
-                    <Button  primary>Complete Task</Button>
-                </div>
-            }
         </div>
     );
 };

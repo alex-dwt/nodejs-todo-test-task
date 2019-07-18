@@ -1,6 +1,7 @@
 import {
-    getOneTask,
-    getTasksList,
+    completeTaskRequest,
+    getOneTaskRequest,
+    getTasksListRequest,
 } from "../services/ApiService";
 import {store} from "../App";
 import {
@@ -8,8 +9,8 @@ import {
     TASKS_ACTION_TASKS_LIST_LOADING_FINISHED,
 } from "../reducers/TasksReducer";
 
-export async function TasksListPageOpened() {
-    const payload = await getTasksList();
+export async function tasksListPageOpenedAction() {
+    const payload = await getTasksListRequest();
 
     store.dispatch({
         type: TASKS_ACTION_TASKS_LIST_LOADING_FINISHED,
@@ -17,16 +18,27 @@ export async function TasksListPageOpened() {
     });
 }
 
-export async function TasksViewOnePageOpened(id) {
+export async function tasksViewOnePageOpenedAction(id) {
     store.dispatch({
         type: TASKS_ACTION_CURRENT_TASK_LOADING_FINISHED,
         payload: null,
     });
 
-    const payload = await getOneTask(id);
+    const payload = await getOneTaskRequest(id);
 
     store.dispatch({
         type: TASKS_ACTION_CURRENT_TASK_LOADING_FINISHED,
         payload,
     });
+}
+
+export async function completeTaskAction(id) {
+    const payload = await completeTaskRequest(id);
+
+    if (payload) {
+        store.dispatch({
+            type: TASKS_ACTION_CURRENT_TASK_LOADING_FINISHED,
+            payload,
+        });
+    }
 }
