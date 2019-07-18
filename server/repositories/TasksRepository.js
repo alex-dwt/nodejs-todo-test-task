@@ -5,7 +5,7 @@ const TasksRepository = {
 
     getList: () => Task.findAll({
         order: [
-            ['createdAt', 'ASC'],
+            ['createdAt', 'DESC'],
         ],
     }),
 };
