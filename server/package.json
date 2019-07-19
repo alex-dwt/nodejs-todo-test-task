@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "babel-node index.js",
     "test": "mocha --exit tests/*.js"
   },
   "author": "Alex Lukashevich",
@@ -14,10 +14,19 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "pg": "^7.11.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
     "sequelize": "^5.10.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "mocha": "^6.1.4"
