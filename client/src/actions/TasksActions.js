@@ -3,7 +3,7 @@ import {
     getOneTaskRequest,
     getTasksListRequest,
 } from "../services/ApiService";
-import {store} from "../App";
+import {store} from "../index";
 import {
     TASKS_ACTION_CURRENT_TASK_LOADING_FINISHED,
     TASKS_ACTION_TASKS_LIST_LOADING_FINISHED,
