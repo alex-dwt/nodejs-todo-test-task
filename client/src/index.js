@@ -7,10 +7,10 @@ import {
 } from 'redux';
 import {
     BrowserRouter as Router,
-    Route,
 } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { renderRoutes } from 'react-router-config';
 import 'semantic-ui-css/semantic.min.css'
 
 import TasksReducer from './reducers/TasksReducer';
@@ -29,7 +29,7 @@ ReactDOM.render(
         <div className="ui text container">
             <h2 className="ui header">TODOs Application</h2>
             <Router>
-                <Routes/>
+                {renderRoutes(Routes)}
             </Router>
         </div>
     </Provider>,
