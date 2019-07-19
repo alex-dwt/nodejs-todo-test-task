@@ -14,8 +14,7 @@ const sequelize = new Sequelize(
 
 const Task = TaskModel(sequelize, Sequelize);
 
-sequelize.sync();
-
 module.exports = {
     Task,
+    sequelize,
 };

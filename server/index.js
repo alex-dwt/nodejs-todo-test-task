@@ -4,8 +4,10 @@ const cors = require('cors');
 const path = require('path');
 
 const TASKS_URL = '/api/tasks';
+const APP_STARTED_EVENT = 'APP_STARTED_EVENT';
 
 const TasksController = require('./controllers/TasksController');
+const {sequelize} = require('./sequelize');
 
 const app = express();
 app.use(bodyParser.json());
@@ -20,9 +22,19 @@ app.get(
 
 app.use(TASKS_URL, TasksController);
 
-app.listen(80);
+sequelize
+    .sync()
+    .then(()=> {
+        app.listen(80);
+        app.emit(APP_STARTED_EVENT);
+    })
+    .catch(() => {
+        console.error('Error with DB');
+        process.exit(1);
+    });
 
 module.exports = {
     app,
     TASKS_URL,
+    APP_STARTED_EVENT,
 };

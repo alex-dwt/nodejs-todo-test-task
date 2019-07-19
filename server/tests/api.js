@@ -5,12 +5,21 @@ const should = chai.should();
 const {
     app,
     TASKS_URL,
+    APP_STARTED_EVENT,
 } = require('../index');
 const CreateTaskHandler = require('../handlers/CreateTaskHandler');
 
 chai.use(chaiHttp);
 
 const agent = chai.request.agent(app);
+
+before(function (done) {
+    this.timeout(5000);
+
+    app.on(APP_STARTED_EVENT, function(){
+        done();
+    });
+});
 
 describe('Testing "get" endpoints:', () => {
     it('It should get a list of tasks', done => {
