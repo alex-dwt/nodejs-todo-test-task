@@ -37,18 +37,16 @@ app.get(
             return res.status(500).send();
         }
 
-        // const content = renderToString(
-        //     <Provider store={store}>
-        //         <div className="ui text container">
-        //             <h2 className="ui header">TODOs Application</h2>
-        //             <StaticRouter>
-        //                 <Routes />
-        //             </StaticRouter>
-        //         </div>
-        //     </Provider>,
-        // );
-
-        const content = '';
+        const content = renderToString(
+            <Provider store={store}>
+                <div className="ui text container">
+                    <h2 className="ui header">TODOs Application</h2>
+                    <StaticRouter location={req.path} context={{}}>
+                        {renderRoutes(Routes)}
+                    </StaticRouter>
+                </div>
+            </Provider>,
+        );
 
         return res.send(
             data.replace(
