@@ -2,8 +2,8 @@
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 // import { StaticRouter } from 'react-router-dom';
-// import Routes from '../client/src/routes';
-import store from "../client/src/store";
+// import Routes from './client/src/routes';
+import store from "./client/src/store";
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -24,7 +24,7 @@ app.use(cors());
 /**
  * Front
  */
-const CLIENT_FILES_PATH = '../client/build';
+const CLIENT_FILES_PATH = './client/build';
 app.use('/static', express.static(`${CLIENT_FILES_PATH}/static`));
 app.use('/styles', express.static(`${CLIENT_FILES_PATH}/styles`));
 app.get(
