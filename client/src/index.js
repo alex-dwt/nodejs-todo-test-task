@@ -1,28 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-    createStore,
-    applyMiddleware,
-    combineReducers,
-} from 'redux';
-import {
     BrowserRouter as Router,
 } from 'react-router-dom'
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 import { renderRoutes } from 'react-router-config';
 import 'semantic-ui-css/semantic.min.css'
 
-import TasksReducer from './reducers/TasksReducer';
-
+import store from './store';
 import Routes from './routes';
-
-const store = createStore(
-    combineReducers({
-        tasks: TasksReducer,
-    }),
-    applyMiddleware(thunk)
-);
 
 ReactDOM.render(
     <Provider store={store}>
@@ -35,7 +21,3 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
-
-export {
-    store,
-};
