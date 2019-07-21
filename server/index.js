@@ -3,7 +3,10 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import Routes from './client/src/routes';
-import { renderRoutes } from 'react-router-config';
+import {
+    renderRoutes,
+    matchRoutes,
+} from 'react-router-config';
 import store from "./client/src/store";
 
 const express = require('express');
@@ -32,10 +35,19 @@ app.use('/styles', express.static(`${CLIENT_FILES_PATH}/styles`));
 app.get(
   /^\/(?!api).*/,
   (req, res) => {
-    fs.readFile(path.resolve(`${CLIENT_FILES_PATH}/index.html`), 'utf8', (err, data) => {
+    fs.readFile(path.resolve(`${CLIENT_FILES_PATH}/index.html`), 'utf8', async (err, data) => {
         if (err) {
             return res.status(500).send();
         }
+
+        let actions = [];
+        for (const {route: {component}, match: {params}} of matchRoutes(Routes, req.path)) {
+            if (!component.WrappedComponent.onInitActions) {
+                continue;
+            }
+            actions = actions.concat(actions, component.WrappedComponent.onInitActions(params));
+        }
+        await Promise.all(actions.map(action => action()));
 
         const content = renderToString(
             <Provider store={store}>

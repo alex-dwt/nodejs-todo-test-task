@@ -19,6 +19,12 @@ class Screen extends PureComponent {
         tasksViewOneTaskAction(this.props.match.params.id);
     }
 
+    static onInitActions(routeParams) {
+        return [
+            async () => await tasksViewOneTaskAction(routeParams.id),
+        ];
+    }
+
     render() {
         return (
             <div>

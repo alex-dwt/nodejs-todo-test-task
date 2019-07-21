@@ -13,6 +13,12 @@ class Screen extends PureComponent {
         tasksViewListTasksAction();
     }
 
+    static onInitActions(routeParams) {
+        return [
+            async () => await tasksViewListTasksAction(),
+        ];
+    }
+
     render() {
         return (
             <Table celled striped selectable>
@@ -70,7 +76,7 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = dispatch => ({
-
+    aaa: () => {console.log('test')}
 });
 
 export const TasksListScreen = connect(
