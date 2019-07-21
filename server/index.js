@@ -1,8 +1,9 @@
-// import React from 'react';
+import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
-// import { StaticRouter } from 'react-router-dom';
-// import Routes from './client/src/routes';
+import { StaticRouter } from 'react-router-dom';
+import Routes from './client/src/routes';
+import { renderRoutes } from 'react-router-config';
 import store from "./client/src/store";
 
 const express = require('express');
@@ -10,6 +11,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+import serialize from 'serialize-javascript';
 
 const TASKS_URL = '/api/tasks';
 const APP_STARTED_EVENT = 'APP_STARTED_EVENT';
@@ -51,7 +53,12 @@ app.get(
         return res.send(
             data.replace(
                 '<div id="root"></div>',
-                `<div id="root">${content}</div>`
+                `
+                    <div id="root">${content}</div>
+                    <script>
+                      window.__PRELOADED_STATE__ = ${serialize(store.getState())}
+                    </script>
+                `
             )
         );
     })
