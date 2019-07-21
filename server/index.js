@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 // import { StaticRouter } from 'react-router-dom';
 // import Routes from '../client/src/routes';
-import {store} from "../client/src";
+import store from "../client/src/store";
 
 const express = require('express');
 const bodyParser = require('body-parser');
