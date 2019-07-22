@@ -3,11 +3,8 @@ version: "2.2"
 services:
     server:
         image: nodejstesttask:1.0.0
-        command: bash -c "sleep 1 && npm start"
         build:
             context: .
-        volumes:
-            - '.:/app'
         environment:
             - NODE_ENV=${NODE_ENV}
             - POSTGRES_PASSWORD=${DB_PASS}
@@ -28,4 +25,4 @@ services:
             - webnet
 
 networks:
-  webnet:
+    webnet:
