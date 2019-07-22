@@ -14,3 +14,7 @@ You will be able to browse this application on http://localhost:8888.
 Improvements which must be done on server:
 - add some validation to creating/editing actions and received fields from a client
 - add validation of UUID
+
+Future improvements with the Docker:
+- add some functionality to the server about waiting starting of "database" container,
+and only then trying to connect to DB (now we use the "quick fix" command "sleep 10") 
