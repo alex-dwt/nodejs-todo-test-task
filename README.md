@@ -9,3 +9,8 @@
 
 3. To run application on your computer go to this directory and run the command "docker-compose up".
 You will be able to browse this application on http://localhost:8888.
+
+
+Improvements which must be done on server:
+- add some validation to creating/editing actions and received fields from a client
+- add validation of UUID
